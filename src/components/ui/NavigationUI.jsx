@@ -298,6 +298,7 @@ const NavigationUI = () => {
                     bottom: '12px',
                     zIndex: 50,
                     display: 'flex',
+                    pointerEvents: 'auto',
                     alignItems: 'center',
                     gap: '8px',
                     padding: '7px 12px',
