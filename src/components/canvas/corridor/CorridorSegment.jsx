@@ -6,6 +6,7 @@ import CorridorWalls from './CorridorWalls';
 import DoorSection from './DoorSection';
 import SegmentDoors from './SegmentDoors';
 import Avatar from './Avatar';
+import FounderAvatar from './FounderAvatar';
 import HeroText from './HeroText';
 import Doodles from './Doodles';
 import CorridorDecorations from './CorridorDecorations';
@@ -136,6 +137,9 @@ const CorridorSegment = ({
 
                 {/* Avatar - center */}
                 <Avatar position={[0, -0.61, -0.3]} />
+
+                {/* Sketch founder - right side, greets visitors */}
+                <FounderAvatar position={[1.65, -0.35, -0.6]} />
 
 
                 {/* Doodles around avatar */}
