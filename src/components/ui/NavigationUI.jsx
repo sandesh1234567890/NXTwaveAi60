@@ -310,7 +310,8 @@ const NavigationUI = () => {
                     fontSize: '0.75rem',
                     fontWeight: 'bold',
                     textDecoration: 'none',
-                    boxShadow: '2px 2px 0 #1a1a1a'
+                    boxShadow: '2px 2px 0 #1a1a1a',
+                    cursor: 'pointer'
                 }}
             >
                 <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true">
