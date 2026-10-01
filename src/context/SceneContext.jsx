@@ -74,9 +74,22 @@ export const SceneProvider = ({ children }) => {
 
     // Teleportation functions
 
-    // Initiate teleport - called when user clicks room on map
+    // Initiate teleport - called when user clicks room on map.
+    // NOTE: roomId null/undefined means "back to corridor" (browser/phone back
+    // button). That must use the normal room-exit animation (DoorSection
+    // listens for exitRequested), NOT the camera teleport: TeleportRoom only
+    // knows door positions for real rooms, so a teleport-to-null would strand
+    // the camera inside the old room with the room unmounted (white screen).
     const teleportTo = useCallback((roomId) => {
         if (isTeleporting || roomId === currentRoom) return; // Prevent double teleport or same room
+
+        if (roomId === null || roomId === undefined) {
+            if (currentRoom !== null) {
+                setExitRequested(true);
+                setOverlayContent(null);
+            }
+            return;
+        }
 
         setTeleportTarget(roomId);
         setIsTeleporting(true);
