@@ -8,28 +8,28 @@ import { useScene } from '../context/SceneContext';
 const ROOM_META = {
     null: {
         path: '/',
-        title: 'Shan — Creative Full Stack Developer & Interactive Web Engineer',
-        description: 'Portfolio of Shan, Creative Full Stack Developer specializing in immersive digital experiences, scrollytelling, 3D web experiences, motion design, and scalable full stack architecture.',
+        title: 'Sandesh — NXTwave Ai 60min',
+        description: 'Free 60-min NXTwave workshop by Sandesh: final-year engineers build their first AI project with certificate, live URL and referrals.',
     },
     about: {
         path: '/about',
-        title: 'About — Shan Portfolio',
-        description: 'Learn about Shan — a Creative Full Stack Developer bridging design and development to build immersive digital experiences inspired by Apple, Stripe, and Linear.',
+        title: 'Outcomes — Sandesh NXTwave AI60',
+        description: 'NxtWave Launchpad outcomes: 2500+ companies hired, 80L Apple, 66L, 57L offers, 15000+ IIT/IIIT community.',
     },
     gallery: {
         path: '/gallery',
-        title: 'Gallery & Featured Work — Shan Portfolio',
-        description: 'Explore the flagship projects engineered by Shan, including Apple Vision Pro Interactive Experience, BMW M4 GT3 EVO Showcase, Luxury Tailor, and high-performance ecommerce platforms.',
+        title: 'Workshop — Sandesh NXTwave AI60',
+        description: 'Build your first AI project in 60 minutes: no-code build, live deploy, resume bullet and certificate. Free, 500 seats.',
     },
     studio: {
         path: '/studio',
-        title: 'The Studio — Shan Portfolio',
-        description: 'Explore Shan\'s interactive 3D studio showcasing full stack engineering architecture, 3D web experiments, and high-performance UI systems.',
+        title: 'NxtWave — Sandesh NXTwave AI60',
+        description: 'Real NxtWave company info: Launchpad, MAANG mentors, founders Forbes 30 Under 30, $33M funding.',
     },
     contact: {
         path: '/contact',
-        title: 'Contact — Shan Portfolio',
-        description: 'Let\'s build something people remember. Get in touch with Shan for immersive web experiences and scalable full stack applications.',
+        title: 'Register — Sandesh NXTwave AI60',
+        description: 'Claim your free AI60 seat in 20 seconds and get your referral link. Top 3 referrers win Rs 500.',
     },
 };
 

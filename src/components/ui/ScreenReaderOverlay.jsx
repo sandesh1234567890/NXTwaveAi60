@@ -26,11 +26,11 @@ const ScreenReaderOverlay = () => {
 
             {/* Main accessible navigation */}
             <nav id="sr-main-nav" className="sr-only" aria-label="Portfolio rooms">
-                <h1>Shan — Creative Full Stack Developer</h1>
-                <h2>Portfolio Navigation</h2>
+                <h1>Sandesh — NXTwave Ai 60min</h1>
+                <h2>Workshop Navigation</h2>
 
                 {!hasEntered && (
-                    <p>Welcome to Shan's interactive 3D portfolio. Click or press Enter on the doors to enter.</p>
+                    <p>Welcome to Sandesh NXTwave AI60 workshop. Click or press Enter on the doors to enter.</p>
                 )}
 
                 {hasEntered && !isInRoom && (
@@ -39,22 +39,22 @@ const ScreenReaderOverlay = () => {
                         <ul>
                             <li>
                                 <button onClick={() => teleportTo('about')} type="button">
-                                    About — My story, skills, and journey
+                                    Outcomes — NxtWave offers and success stories
                                 </button>
                             </li>
                             <li>
                                 <button onClick={() => teleportTo('gallery')} type="button">
-                                    The Gallery — My projects and work
+                                    The Workshop — 60-min AI project plan
                                 </button>
                             </li>
                             <li>
                                 <button onClick={() => teleportTo('contact')} type="button">
-                                    Contact — Get in touch with me
+                                    Register — claim your free AI60 seat
                                 </button>
                             </li>
                             <li>
                                 <button onClick={() => teleportTo('studio')} type="button">
-                                    The Studio — Technologies and experience
+                                    NxtWave — company info and founders
                                 </button>
                             </li>
                         </ul>
