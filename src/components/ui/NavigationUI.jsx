@@ -288,7 +288,7 @@ const NavigationUI = () => {
 
             {/* Builder credit - always visible */}
             <a
-                href="https://www.linkedin.com/public-profile/settings/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_contact_info%3B%2F3l%2BLsBLTUqF1frFIF6Z7w%3D%3D"
+                href="https://www.linkedin.com/in/sandesh-surwase-0952bb26b/"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Built by Sandesh Surwase, BIT - LinkedIn profile"
