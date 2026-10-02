@@ -1192,11 +1192,10 @@ const ProjectCard = memo(forwardRef(({ index, project, clothespinTexture, curren
                         onClick={(e) => {
                             if (isSelected && !isTransitioning) {
                                 e.stopPropagation();
-                                // Workshop cards open the sketch registration form;
-                                // external project links open in a new tab.
-                                if (project.url && project.url.startsWith('#') && onRegister) {
+                                // Every project's OPEN PROJECT opens registration.
+                                if (onRegister) {
                                     onRegister();
-                                } else {
+                                } else if (project.url) {
                                     window.open(project.url, '_blank');
                                 }
                             }
