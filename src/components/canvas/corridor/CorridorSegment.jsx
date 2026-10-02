@@ -138,8 +138,8 @@ const CorridorSegment = ({
                 {/* Avatar - center */}
                 <Avatar position={[0, -0.61, -0.3]} />
 
-                {/* Sketch founder - right side, greets visitors */}
-                <FounderAvatar position={[1.65, -0.35, -0.6]} />
+                {/* Sketch founder - right side, greets visitors (segment 0 only: avoids multiplying Text/planes across infinite segments) */}
+                {segmentIndex === 0 && <FounderAvatar position={[1.65, -0.35, -0.6]} />}
 
 
                 {/* Doodles around avatar */}

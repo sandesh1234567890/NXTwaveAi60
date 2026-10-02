@@ -259,7 +259,7 @@ const InfiniteSkyManager = ({ scrollProgressRef }) => {
  */
 const IntroMilestone = ({ z, scrollProgressRef }) => {
     // Load avatar texture - NxtWave founders floating image
-    const avatarTexture = useLoader(THREE.TextureLoader, '/images/nxtwave-founders.png');
+    const avatarTexture = useLoader(THREE.TextureLoader, '/images/nxtwave-founders.webp');
     const { camera, viewport } = useThree();
     const isTouch = isTouchDevice();
 
@@ -419,9 +419,9 @@ const AWARDS_DATA = {
         layout: 'certificate_grid',
         title: 'NxtWave Launchpad — Real Outcomes 2026',
         items: [
-            { label: 'Subhash • IIT KGP • 80L Apple', date: '2026', image: '/images/nxtwave-founders.png', url: '#' },
-            { label: 'Nobin • IIT Delhi • 66L', date: '2026', image: '/images/nxtwave-founders.png', url: '#' },
-            { label: 'Mohith • IIT Roorkee • 57L', date: '2026', image: '/images/nxtwave-founders.png', url: '#' },
+            { label: 'Subhash • IIT KGP • 80L Apple', date: '2026', image: '/images/nxtwave-founders.webp', url: '#' },
+            { label: 'Nobin • IIT Delhi • 66L', date: '2026', image: '/images/nxtwave-founders.webp', url: '#' },
+            { label: 'Mohith • IIT Roorkee • 57L', date: '2026', image: '/images/nxtwave-founders.webp', url: '#' },
             { label: '2500+ companies hired NxtWave learners', date: 'Active', image: '/textures/about/button.webp', url: 'https://nw-launchpad.nxtwave.tech/' },
         ],
         platformConfig: {
