@@ -241,9 +241,9 @@ const InfiniteSkyManager = ({ scrollProgressRef }) => {
                         scrollProgressRef={scrollProgressRef}
                     />
 
-                    {/* === SKILLS MILESTONE === */}
+                    {/* === Q&A MILESTONE (AI60 objections, one by one) === */}
 
-                    <SkillsMilestone
+                    <QAMilestone
                         z={-(cycleIndex * STORY_CYCLE_LENGTH + 135)}
                         scrollProgressRef={scrollProgressRef}
                     />
@@ -1336,6 +1336,121 @@ const SkillBalloon = ({ config, revealFactorRef, spreadFactorRef, timeRef }) => 
                     loop={false}
                 />
             </group>
+        </group>
+    );
+};
+
+/**
+ * Q&A Milestone - AI60 objections answered ONE BY ONE as you fly.
+ * Same slot as the old SKILLS stop. Scroll steps Q1 -> Q2 -> Q3 -> Q4.
+ */
+const QA_ITEMS = [
+    {
+        q: 'NO PYTHON? NO PROBLEM.',
+        a: 'Zero code.\nPrompt, build, deploy live\nin 60 mins.',
+    },
+    {
+        q: 'MECH? CIVIL? ECE?',
+        a: 'All branches welcome.\nIf you can browse,\nyou can build.',
+    },
+    {
+        q: 'FIRST AI PROJECT\nIN 60 MINUTES?',
+        a: 'No Python needed.\nLive URL + certificate.\nSun 7PM, 500 seats.',
+    },
+    {
+        q: 'FINAL-YEAR? PLACEMENTS?',
+        a: '72% interviews ask AI project.\nFree seat, bring friends.\nTop 3 win Rs 500.',
+    },
+];
+
+const QAMilestone = ({ z, scrollProgressRef }) => {
+    const groupRef = useRef();
+    const qRefs = useRef([]);
+    const aRefs = useRef([]);
+    const nRefs = useRef();
+
+    useFrame(() => {
+        if (!groupRef.current) return;
+
+        // Same world-clip convention as other milestones
+        const scrollProgress = scrollProgressRef?.current || 0;
+        const worldZ = ROOM_Z + scrollProgress + z;
+        groupRef.current.visible = worldZ < MILESTONE_CORRIDOR_CLIP_Z;
+        if (!groupRef.current.visible) return;
+
+        const distanceZ = z + scrollProgress - 55;
+
+        // Step through Q1..Q4 as the milestone approaches (-70 -> -38)
+        const raw = (distanceZ + 70) / 8;
+        const active = Math.min(3, Math.max(0, Math.floor(raw)));
+
+        qRefs.current.forEach((ref, i) => {
+            if (ref) ref.fillOpacity = i === active ? 1 : 0;
+        });
+        aRefs.current.forEach((ref, i) => {
+            if (ref) ref.fillOpacity = i === active ? 1 : 0;
+        });
+        if (nRefs.current) nRefs.current.fillOpacity = 1;
+    });
+
+    return (
+        <group ref={groupRef} position={[0, 0, z]}>
+            {/* Title */}
+            <Text
+                position={[0, 6, 0.5]}
+                fontSize={1.2}
+                color="#1a1a1a"
+                anchorX="center"
+                anchorY="middle"
+                font="/fonts/RubikScribble-Regular.ttf"
+            >
+                GOT QUESTIONS?
+            </Text>
+
+            {/* Counter */}
+            <Text
+                ref={nRefs}
+                position={[0, 5.2, 0.5]}
+                fontSize={0.35}
+                color="#555555"
+                anchorX="center"
+                anchorY="middle"
+                font="/fonts/CabinSketch-Regular.ttf"
+            >
+                straight answers — keep flying
+            </Text>
+
+            {/* One-by-one Q&A cards (same spot, only active is visible) */}
+            {QA_ITEMS.map((item, i) => (
+                <group key={i} position={[0, 0, 0]}>
+                    <Text
+                        ref={(el) => (qRefs.current[i] = el)}
+                        position={[0, 2.6, 0.5]}
+                        fontSize={0.55}
+                        color="#1a1a1a"
+                        anchorX="center"
+                        anchorY="middle"
+                        font="/fonts/CabinSketch-Bold.ttf"
+                        maxWidth={14}
+                        textAlign="center"
+                    >
+                        {item.q}
+                    </Text>
+                    <Text
+                        ref={(el) => (aRefs.current[i] = el)}
+                        position={[0, 0.6, 0.5]}
+                        fontSize={0.38}
+                        color="#4a4a4a"
+                        anchorX="center"
+                        anchorY="middle"
+                        font="/fonts/CabinSketch-Regular.ttf"
+                        maxWidth={14}
+                        textAlign="center"
+                    >
+                        {item.a}
+                    </Text>
+                </group>
+            ))}
         </group>
     );
 };

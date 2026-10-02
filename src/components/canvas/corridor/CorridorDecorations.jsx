@@ -384,6 +384,11 @@ const CorridorDecorations = ({ segmentLength, zOffset, corridorWidth = 4, corrid
             imageWidth: 1.1,
             imageHeight: 1.1,
             offsetFromWall: 0.1, // Przesunięcie bliżej środka korytarza (0.1 unit)
+            signature: "NO PYTHON? NO PROBLEM.\nZero code. Prompt, build,\ndeploy live in 60 mins.",
+            signatureX: 0,
+            signatureY: -0.62,
+            signatureSize: 0.09,
+            signatureColor: '#333333'
         },
         {
             z: zOffset - 25,         // Między Gallery a Studio (relZ -20 do -30)
@@ -395,7 +400,12 @@ const CorridorDecorations = ({ segmentLength, zOffset, corridorWidth = 4, corrid
             image: '/textures/corridor/rysuneknaobrazek3.webp',
             imageWidth: 1.7,
             imageHeight: 1,
-            offsetFromWall: 0.1
+            offsetFromWall: 0.1,
+            signature: "MECH? CIVIL? ECE?\nAll branches welcome.\nIf you can browse, you can build.",
+            signatureX: 0,
+            signatureY: -0.62,
+            signatureSize: 0.09,
+            signatureColor: '#333333'
         },
         {
             z: zOffset - 40,         // Między Studio a About (relZ -34 do -46)
@@ -404,10 +414,10 @@ const CorridorDecorations = ({ segmentLength, zOffset, corridorWidth = 4, corrid
             height: 2.5 / 1.785,
             y: 0.25,
             id: 'frame-3',
-            signature: "Empty canvas!\nWant your art here?\nContact me!",
+            signature: "BUILD YOUR FIRST\nAI PROJECT IN 60 MINUTES?\nNo Python needed.\nLive URL + certificate.\nSun 7PM, 500 seats.",
             signatureX: 0,
             signatureY: 0,
-            signatureSize: 0.12,
+            signatureSize: 0.11,
             signatureColor: '#333333'
         },
         {
@@ -417,10 +427,10 @@ const CorridorDecorations = ({ segmentLength, zOffset, corridorWidth = 4, corrid
             height: 2.5 / 1.785,
             y: 0.35,
             id: 'frame-4',
-            signature: "Empty canvas!\nWant your art here?\nContact me!",
+            signature: "FINAL-YEAR? PLACEMENTS?\n72% interviews ask AI project.\nFree seat, bring friends.\nTop 3 referrers win Rs 500.",
             signatureX: 0,
             signatureY: 0,
-            signatureSize: 0.12,
+            signatureSize: 0.11,
             signatureColor: '#333333'
         },
     ], [zOffset]);

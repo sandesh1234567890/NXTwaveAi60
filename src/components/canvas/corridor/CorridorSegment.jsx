@@ -7,6 +7,7 @@ import DoorSection from './DoorSection';
 import SegmentDoors from './SegmentDoors';
 import Avatar from './Avatar';
 import FounderAvatar from './FounderAvatar';
+import CenterQA from './CenterQA';
 import HeroText from './HeroText';
 import Doodles from './Doodles';
 import CorridorDecorations from './CorridorDecorations';
@@ -154,6 +155,9 @@ const CorridorSegment = ({
                 >
                     #{segmentIndex}
                 </Text>
+
+                {/* Center floating Q&A (AI60 objections answered while scrolling) */}
+                <CenterQA zOffset={zOffset} />
             </group>
 
             {/* === DOOR SECTIONS (wall + door + label as one unit) === */}
