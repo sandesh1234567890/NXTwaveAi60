@@ -96,7 +96,19 @@ function AppContent() {
   const { settings, downgradeTier, tier } = usePerformance();
 
   useEffect(() => {
-    initAudio();
+    // Defer audio fetch until first user gesture: initAudio() pulls ~9MB
+    // of sounds which otherwise competes with texture/JS loading.
+    // play() creates Audio lazily, and door entry calls
+    // playBackgroundMusic() (which inits itself), so nothing breaks.
+    const initOnGesture = () => initAudio();
+    window.addEventListener('click', initOnGesture, { once: true });
+    window.addEventListener('touchstart', initOnGesture, { once: true });
+    window.addEventListener('keydown', initOnGesture, { once: true });
+    return () => {
+      window.removeEventListener('click', initOnGesture);
+      window.removeEventListener('touchstart', initOnGesture);
+      window.removeEventListener('keydown', initOnGesture);
+    };
   }, []);
 
   const handleSceneReady = useCallback(() => {

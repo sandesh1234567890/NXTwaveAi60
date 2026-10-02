@@ -235,6 +235,18 @@ const Preloader = ({ onComplete, ready }) => {
     setTargetProgress(prev => Math.max(prev, newTarget));
   }, [realProgress, active]);
 
+  // Hold the finished loader briefly so users register 100%,
+  // and never flash it away on fast connections (brand moment).
+  const MIN_DISPLAY_MS = 2000;
+  const EXIT_HOLD_MS = 400;
+  const scheduleExit = () => {
+    if (exitStarted.current) return;
+    exitStarted.current = true;
+    const elapsed = performance.now() - loadStartTime.current;
+    const wait = Math.max(0, MIN_DISPLAY_MS - elapsed) + EXIT_HOLD_MS;
+    setTimeout(() => startExit(), wait);
+  };
+
   // Handle Pencil Sound & Exit checking dynamically
   const checkProgressTriggers = (val) => {
     // Pencil Sound
@@ -248,8 +260,7 @@ const Preloader = ({ onComplete, ready }) => {
 
     // Exit phase - trigger as soon as progress reaches 99% AND 3D scene is ready
     if (val >= 99 && readyRef.current && !exitStarted.current) {
-      exitStarted.current = true;
-      startExit();
+      scheduleExit();
     }
   };
 
@@ -295,13 +306,13 @@ const Preloader = ({ onComplete, ready }) => {
         if (pathLeftRef.current) pathLeftRef.current.style.strokeDashoffset = strokeDashoffset;
         if (pathRightRef.current) pathRightRef.current.style.strokeDashoffset = strokeDashoffset;
 
-        let statusMsg = "Initializing Digital Experience...";
-        if (safeProgress < 25) statusMsg = "Sketching 3D Viewport Canvas...";
-        else if (safeProgress < 50) statusMsg = "Laying React & Next.js Foundation...";
-        else if (safeProgress < 70) statusMsg = "Calibrating GSAP & Motion Shaders...";
-        else if (safeProgress < 85) statusMsg = "Structuring Node.js & Supabase Systems...";
-        else if (safeProgress < 95) statusMsg = "Optimizing Performance & Accessibility...";
-        else statusMsg = "Opening Digital Experience...";
+        let statusMsg = "Opening NXTwave AI60 workshop...";
+        if (safeProgress < 25) statusMsg = "Sketching the corridor...";
+        else if (safeProgress < 50) statusMsg = "Hanging the workshop posters...";
+        else if (safeProgress < 70) statusMsg = "Placing outcomes & founders...";
+        else if (safeProgress < 85) statusMsg = "Preparing your free seat...";
+        else if (safeProgress < 95) statusMsg = "Sharpening pencils...";
+        else statusMsg = "Opening NXTwave AI60 workshop...";
 
         if (statusLeftRef.current) statusLeftRef.current.innerText = statusMsg;
         if (statusRightRef.current) statusRightRef.current.innerText = statusMsg;
@@ -321,8 +332,7 @@ const Preloader = ({ onComplete, ready }) => {
   // Fallback trigger if ready becomes true AFTER 99% reached
   useEffect(() => {
     if (displayProgressRef.current >= 99 && !exitStarted.current) {
-      exitStarted.current = true;
-      startExit();
+      scheduleExit();
     }
   }, [ready]);
 
