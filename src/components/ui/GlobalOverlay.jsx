@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { useScene } from '../../context/SceneContext';
+import ContactForm from '../ContactForm';
 import gsap from 'gsap';
 import { TextPlugin } from 'gsap/TextPlugin';
 import '../../styles/GlobalOverlay.scss';
@@ -69,6 +70,8 @@ const GlobalOverlay = () => {
 };
 
 const ContentCard = ({ content, isOpen, onClose, isMobile }) => {
+    const { openOverlay } = useScene();
+
     if (!content) return null;
 
     const label = content.platformConfig?.label || 'Content';
@@ -407,8 +410,17 @@ const ContentCard = ({ content, isOpen, onClose, isMobile }) => {
                         </button>
                     </div>
 
-                    {/* === LAYOUT: CERTIFICATE GRID === */}
-                    {content.layout === 'certificate_grid' ? (
+                    {/* === LAYOUT: REGISTER (AI60 workshop form) === */}
+                    {content.layout === 'register' ? (
+                        <div style={{
+                            overflowY: 'auto',
+                            overflowX: 'hidden',
+                            paddingRight: '4px',
+                            ...getStaggerStyle(200)
+                        }}>
+                            <ContactForm />
+                        </div>
+                    ) : content.layout === 'certificate_grid' ? (
                         <div style={{ position: 'relative', flex: 1, minHeight: 0 }}>
                             <div
                                 ref={scrollContainerRef}
@@ -534,14 +546,28 @@ const ContentCard = ({ content, isOpen, onClose, isMobile }) => {
                                 paddingTop: '1rem',
                                 ...getStaggerStyle(400)
                             }}>
-                                <a
-                                    href={content.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="studio-action-button"
-                                >
-                                    Open Link ↗
-                                </a>
+                                {(content.url && content.url.startsWith('#')) ? (
+                                    <button
+                                        onClick={() => openOverlay({
+                                            layout: 'register',
+                                            title: 'Register — Free AI60 Seat',
+                                            platformConfig: { label: 'Register' }
+                                        })}
+                                        className="studio-action-button"
+                                        style={{ cursor: 'pointer' }}
+                                    >
+                                        Register Now ↗
+                                    </button>
+                                ) : (
+                                    <a
+                                        href={content.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="studio-action-button"
+                                    >
+                                        Open Link ↗
+                                    </a>
+                                )}
                             </div>
                         </>
                     )}

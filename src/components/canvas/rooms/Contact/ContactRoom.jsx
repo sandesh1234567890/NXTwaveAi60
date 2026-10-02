@@ -429,7 +429,7 @@ const ContactRoom = ({ showRoom, onReady, isExiting, isWarmup }) => {
                 rotation={[0, -0.3, 0]}
                 texturePath="/textures/contact/beczka.webp"
                 label="EMAIL"
-                onClick={() => window.location.href = 'mailto:contact@shan.dev'}
+                onClick={() => window.location.href = 'mailto:media@nxtwave.tech'}
                 paintOnBeforeCompile={onBeforeCompile}
                 paintUniforms={uniformsData}
             />

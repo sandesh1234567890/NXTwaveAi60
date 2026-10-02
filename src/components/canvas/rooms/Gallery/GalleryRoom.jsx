@@ -529,6 +529,11 @@ const GalleryRoom = ({ showRoom, onReady, isExiting, isWarmup }) => {
                             isSelected={selectedCard === i}
                             scrollToIndex={scrollToIndex}
                             onClick={handleCardClick}
+                            onRegister={() => openOverlay({
+                                layout: 'register',
+                                title: 'Register — Free AI60 Seat',
+                                platformConfig: { label: 'Register' }
+                            })}
                             isMobile={!canHover} // Use hover capability for mobile behavior logic
                             isTransitioning={isTransitioning} // Pass down to lock out individual pointer events just in case
                             paintProgress={uniformsData.uPaintProgress}
@@ -696,7 +701,7 @@ const FlyingBird = ({ texture }) => {
 };
 
 // Sub-component for individual project cards
-const ProjectCard = memo(forwardRef(({ index, project, clothespinTexture, currentScroll, materials, curve, isSelected, scrollToIndex, onClick, isMobile, isTransitioning, paintProgress, roomOrigin }, ref) => {
+const ProjectCard = memo(forwardRef(({ index, project, clothespinTexture, currentScroll, materials, curve, isSelected, scrollToIndex, onClick, onRegister, isMobile, isTransitioning, paintProgress, roomOrigin }, ref) => {
     const cardRef = useRef();
     const paperRef = useRef(); // Ref for the moving part (Paper)
     const materialRef = useRef();
@@ -1187,7 +1192,13 @@ const ProjectCard = memo(forwardRef(({ index, project, clothespinTexture, curren
                         onClick={(e) => {
                             if (isSelected && !isTransitioning) {
                                 e.stopPropagation();
-                                window.open(project.url, '_blank');
+                                // Workshop cards open the sketch registration form;
+                                // external project links open in a new tab.
+                                if (project.url && project.url.startsWith('#') && onRegister) {
+                                    onRegister();
+                                } else {
+                                    window.open(project.url, '_blank');
+                                }
                             }
                         }}
                         onPointerEnter={(e) => {
