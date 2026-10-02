@@ -71,7 +71,7 @@ const RAW_CONTENT_DATA = [
         platform: 'codrops',
         title: 'Founders: Rahul Attuluri • Sashank Gujjula • Anupam Pedarla',
         description: 'IIIT-H Ex-Amazon, IIT-B AIR 119, IIT-KGP. Forbes 30 Under 30, $33M funding, OpenAI Academy GenAI challenge. See floating photo in Outcomes room.',
-        thumbnail: '/images/nxtwave-founders.png',
+        thumbnail: '/images/nxtwave-founders.webp',
         url: 'https://nw-launchpad.nxtwave.tech/',
         date: '2026-08-19',
         readTime: '4 min',
