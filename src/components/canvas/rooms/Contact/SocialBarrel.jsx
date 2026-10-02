@@ -149,6 +149,7 @@ const SocialBarrel = ({ position, rotation = [0, 0, 0], texturePath, label, onCl
                     fillOpacity={paintUniforms ? 0 : 1}
                     anchorX="center"
                     anchorY="middle"
+                    maxWidth={1.9}
                 >
                     {label}
                 </Text>

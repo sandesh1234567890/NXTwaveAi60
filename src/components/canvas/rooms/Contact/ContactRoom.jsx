@@ -428,7 +428,7 @@ const ContactRoom = ({ showRoom, onReady, isExiting, isWarmup }) => {
                 position={isMobile ? [1.5, -0.3, -7] : [5, -0.3, -8]}
                 rotation={[0, -0.3, 0]}
                 texturePath="/textures/contact/beczka.webp"
-                label="EMAIL"
+                label="REGISTRATION"
                 onClick={() => openOverlay({
                     layout: 'register',
                     title: 'Register — Free AI60 Seat',
