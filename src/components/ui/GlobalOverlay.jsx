@@ -451,7 +451,18 @@ const ContentCard = ({ content, isOpen, onClose, isMobile }) => {
                                     }}
                                         onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
                                         onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
-                                        onClick={() => window.open(item.url || content.url || '#', '_blank')}
+                                        onClick={() => {
+                                            const target = item.url || content.url || '#';
+                                            if (target.startsWith('#')) {
+                                                openOverlay({
+                                                    layout: 'register',
+                                                    title: 'Register — Free AI60 Seat',
+                                                    platformConfig: { label: 'Register' }
+                                                });
+                                            } else {
+                                                window.open(target, '_blank');
+                                            }
+                                        }}
                                     >
                                         <div style={{
                                             position: 'relative',
